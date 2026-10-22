@@ -2,16 +2,23 @@ import { useState } from 'react';
 import './App.css';
 import {Button, Form, FormCheck, FormControl, FormLabel} from "react-bootstrap"
 function App() {
+  
   const [checked, setChecked] = useState(true)
   const [adres, setAdres] = useState("")
   const [login, setLogin] = useState("")
   const [haslo, setHaslo] = useState("")
 
+  // nazwa funkcji: handleFill
+  // opis funkcji: ustawia adres, login i haslo na wartosci z inputow
+  // parametry: brak
+  // zwracany typ i opis: brak
+  // autor: 12345678901
   const handleFill = ()=>{
-    console.log(document.getElementById(adres))
-    console.log(document.getElementById(login))
-    console.log(document.getElementById(haslo))
+    setAdres(document.getElementById('adres').value)
+    setLogin(document.getElementById('login').value)
+    setHaslo(document.getElementById('haslo').value)
   }
+
   return (
     <div>
       {/* blok 1 */}
@@ -20,7 +27,7 @@ function App() {
 
         <Form>
           <FormLabel htmlFor='adres'>Adres WWW</FormLabel>
-          <FormControl id='adres' placeholder='Adres strony WWW'/>
+          <FormControl id='adres' onChange={(e)=>console.log(e)} placeholder='Adres strony WWW'/>
 
           <FormLabel htmlFor='login'>Login</FormLabel>
           <FormControl id='login' placeholder='Twój login'/>
@@ -39,9 +46,9 @@ function App() {
 
       {/* blok 2 */}
       <div>
-        <p style={{padding:"0.5rem", color:"blue"}}>Adres: {adres}</p>
-        <p style={{padding:"0.5rem"}}>Login: {login}</p>
-        <p style={{padding:"0.5rem"}}>Haslo: {adres ? (haslo && checked ? "Haslo automatycznie generowane" : haslo) : null }</p>
+        <p class="lead p-2 text-primary">Adres: {adres}</p>
+        <p class="p-2">Login: {login}</p>
+        <p class="p-2">Haslo{checked ? " automatycznie generowane" : `: ${haslo}`}</p>
       </div>
     </div>
   );
