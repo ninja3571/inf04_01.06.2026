@@ -16,7 +16,7 @@
          * nazwa funkcji: LosujHaslo
          * opis funkcji: tworzy haslo losujac znaki i wstawiajac je w losowe miejsca
          * parametry: brak
-         * wartość zwracana: hasloKoncowe - haslo w zmiennej napisowej
+         * zwracany typ i opis: string - hasloKoncowe - haslo w string
          * autor: 12345678901
          * ****/
         static string LosujHaslo()
@@ -26,14 +26,14 @@
             char[] duze = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
             char[] cyfry = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
             char[] dialektyczne = ['ą', 'ę', 'ł', 'ń', 'ó', 'ś', 'ż', 'ź', 'Ą', 'Ę', 'Ł', 'Ń', 'Ó', 'Ś', 'Ż', 'Ź'];
-            char[] specjalne = ['!', '@', '#', '$', '%', '^', '&', '&', '*', '(', ')'];
+            char[] specjalne = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+'];
             List<char> haslo = new List<char> ();
             string hasloKoncowe = "";
             for (int i = 0; i <3; i++)
             {
                 char znak = male[rand.Next(male.Length)];
                 haslo.Add(znak);
-                int miejsce = rand.Next(haslo.Count-1);
+                int miejsce = rand.Next(haslo.Count);
                 if (haslo[miejsce] != znak) {
                     for (int j = haslo.Count - 1; j > miejsce; j--)
                     {
